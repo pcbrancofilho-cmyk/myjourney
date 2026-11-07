@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#18345F"><meta name="description" content="MY JOURNEY — GROW EVERY DAY. Pequenas missões, grandes transformações.">
+<link rel="manifest" href="manifest.json"><link rel="icon" href="icon-192.png" type="image/png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<title>My Journey</title>
+<style>
+:root{--bg:#EEF3FB;--paper:#FFFFFF;--ink:#172B49;--muted:#71819A;--green:#2C67C5;--green2:#8FB5EE;--line:#D5E0F0;--gold:#2C67C5;--soft:#E7EFFA;--shadow:0 10px 30px #293d2510}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",system-ui,-apple-system,sans-serif;min-height:100vh}
+.app{max-width:760px;margin:auto;padding:18px 15px 100px}.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:15px}.brand{display:flex;align-items:center;gap:9px}.logo{width:38px;height:38px;border-radius:13px;background:#DCE8F8;display:grid;place-items:center;font-size:22px}.brand h1{font-size:18px;letter-spacing:2px;margin:0}.tagline{font-size:9px;color:var(--muted);letter-spacing:1.7px}.season-pill{font-size:10px;background:#E5EEFA;border:1px solid #C9D9F0;border-radius:99px;padding:7px 10px;color:var(--green);font-weight:800}
+.hero{background:linear-gradient(130deg,#244F98,#18345F 68%,#3C78D1);color:#fff;border-radius:24px;padding:20px;position:relative;overflow:hidden;box-shadow:var(--shadow)}.hero:after{content:"✦";position:absolute;right:20px;top:-20px;font-size:150px;color:#fff;opacity:.07}.eyebrow{font-size:10px;letter-spacing:1.8px;color:#D9E7FA;font-weight:900}.hero-main{display:flex;align-items:center;gap:13px;margin:13px 0 18px}.avatar{width:82px;height:82px;border-radius:24px;background:#E4EEFC;overflow:hidden;flex:0 0 82px;border:3px solid #AFCBF3;box-shadow:0 4px 0 #19345D}.avatar img{width:100%;height:100%;object-fit:cover;display:block}.hero h2{margin:0 0 4px;font-size:22px}.hero .sub{color:#DCE8F8;font-size:12px}.level-line{display:flex;justify-content:space-between;gap:8px;font-size:11px;margin-bottom:7px}.level-line strong{color:#BBD3F7}.bar{height:10px;border-radius:99px;background:#142B50;overflow:hidden}.bar>span{display:block;height:100%;width:0;background:linear-gradient(90deg,#8FB5EE,#D8E7FF);border-radius:99px;transition:width .3s}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:12px 0}.stat{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:12px;box-shadow:var(--shadow)}.stat b{display:block;font-size:22px;color:var(--green)}.stat span{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.5px}.stat-label-row{display:flex;align-items:center;gap:7px}.stat-label-row>span:first-child{font-size:10px;color:var(--muted);font-weight:800;letter-spacing:.5px}.stat .streak-fire{display:inline-block!important;font-size:27px;line-height:1;filter:grayscale(1);opacity:.38;transition:filter .2s,opacity .2s,transform .2s}.stat .streak-fire.active{filter:none;opacity:1;animation:flamePulse 1.2s ease-in-out infinite alternate}@keyframes flamePulse{from{transform:scale(1)}to{transform:scale(1.18)}}
+.nav{display:flex;gap:7px;overflow:auto;padding:3px 1px 8px;margin:13px 0}.tab{border:1px solid var(--line);background:#fbfaf3;color:var(--muted);border-radius:99px;padding:10px 13px;font-size:11px;font-weight:800;white-space:nowrap}.tab.active{background:var(--green);color:white;border-color:var(--green)}
+.panel{display:none}.panel.active{display:block}.heading{display:flex;justify-content:space-between;align-items:center;margin:17px 0 10px}.heading h3{font-size:16px;margin:0}.hint{font-size:10px;color:var(--muted)}.card{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:14px;margin-bottom:10px;box-shadow:var(--shadow)}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.quest{display:flex;align-items:center;gap:11px}.quest-icon{width:42px;height:42px;border-radius:14px;background:var(--soft);display:grid;place-items:center;font-size:21px;flex-shrink:0}.quest-body{flex:1;min-width:0}.quest-body h4{font-size:13px;margin:0 0 4px}.quest-body p{font-size:10px;color:var(--muted);margin:0;line-height:1.4}.xp{font-size:11px;color:var(--green);font-weight:900;white-space:nowrap}
+button{font:inherit;cursor:pointer}.primary{border:0;border-radius:12px;background:var(--green);color:white;font-weight:900;padding:12px 15px}.secondary{border:1px solid var(--line);border-radius:11px;background:#f3f5ed;color:var(--ink);padding:9px 12px;font-weight:800}.danger{border:1px solid #e8c9bd;background:#fff4ef;color:#a34f3b;border-radius:10px;padding:8px 10px;font-size:11px;font-weight:800}.tiny{padding:7px 9px;font-size:10px}.full{width:100%}.season-status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px 11px;margin-bottom:12px;border-radius:12px;background:#EAF0F8;border:1px solid #DCE8F8;color:#315F9F;font-size:11px;font-weight:800}.season-status .dot{width:8px;height:8px;border-radius:50%;background:#c59642;flex:0 0 8px}.season-status.active{background:#E5EEFC;border-color:#C4D8F5;color:#2C67C5}.season-status.active .dot{background:#2C67C5}.season-status.ended{background:#f0eee7;border-color:#dedbd0;color:#77766e}.season-status.ended .dot{background:#99958a}.notice{background:#EAF0F8;border:1px solid #DCE8F8;color:#61745d;border-radius:13px;padding:11px;font-size:10px;line-height:1.5;margin-top:10px}
+.cloud-global{display:flex;align-items:center;gap:9px;padding:9px 12px;margin:0 0 12px;background:#fffdf5;border:1px solid var(--line);border-radius:13px;color:var(--muted);font-size:11px;line-height:1.35}.cloud-global .cloud-dot{width:9px;height:9px;flex:0 0 9px;border-radius:50%;background:#a5a99d}.cloud-global strong{color:var(--ink);font-size:11px}.cloud-global .cloud-detail{display:block;margin-top:2px;color:var(--muted);font-size:10px}.cloud-global .cloud-dot{background:#C0392B}.cloud-global.synced .cloud-dot{background:#279653}.cloud-global.connected .cloud-dot,.cloud-global.syncing .cloud-dot{background:#D69A16}.cloud-global.error .cloud-dot,.cloud-global.conflict .cloud-dot{background:#C0392B}.cloud-global.syncing .cloud-dot{animation:cloudPulse 1.1s infinite}@keyframes cloudPulse{50%{opacity:.35}}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}.label{font-size:10px;color:var(--muted);font-weight:800;display:block;margin:9px 0 5px}input,select{width:100%;padding:11px;border:1px solid var(--line);border-radius:11px;background:#fffef9;color:var(--ink);font:inherit;font-size:12px}
+.level-list{display:grid;gap:8px}.level-item{display:flex;align-items:center;gap:10px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:13px;transition:background .2s,border-color .2s,opacity .2s}
+.level-number{width:34px;height:34px;border-radius:11px;background:#E5E9EF;color:#65748A;display:grid;place-items:center;font-weight:900}
+.level-item.passed{background:#F7F9FC;border-color:#DCE3ED}
+.level-item.passed .level-number{background:#E3E8EF;color:#64748B}
+.level-item.current{border-color:#4E86D6;background:#EAF2FF;box-shadow:0 0 0 1px #4E86D622}
+.level-item.current .level-number{background:#D6E5FB;color:#2C67C5}
+.level-item.locked{background:#F7F8FA;border-color:#E8ECF1;opacity:.48}
+.level-item.locked .level-number{background:#EFF1F4;color:#AAB3C0}
+.level-item.locked .desc strong,.level-item.locked .desc small,.level-item.locked>span{color:#AAB3C0}
+.level-item .desc{flex:1}.level-item strong{font-size:12px}.level-item small{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.badges{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.badge-card{background:#F5F7FB;border:1px solid var(--line);border-radius:15px;padding:14px 9px;text-align:center;opacity:.48}.badge-card.unlocked{opacity:1;border-color:#d1b36e;background:#fff9e9}.badge-card .medal{font-size:27px}.badge-card strong{display:block;font-size:12px;margin:5px 0 3px}.badge-card small{font-size:9px;color:var(--muted)}
+.history{padding:10px 0;border-bottom:1px solid var(--line)}.history:last-child{border:0}.history strong{font-size:12px}.history small{display:block;color:var(--muted);font-size:10px;margin-top:3px}
+.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}.cal-day{background:#fffef9;border:1px solid var(--line);border-radius:10px;text-align:center;padding:8px 2px;font-size:9px;color:var(--muted)}.cal-day b{display:block;color:var(--ink);font-size:12px;margin-top:4px}.cal-day.planned{background:#edf3e6;border-color:#D6E3F6}.cal-day.done{background:#E0EBFA;border-color:#7FA6E5}.cal-day.past{opacity:.55}
+.celebration{position:fixed;inset:0;background:#10213bd9;display:none;align-items:center;justify-content:center;padding:20px;z-index:60}.celebration.show{display:flex;animation:celebrateIn .28s ease-out}.celebration-box{width:min(390px,100%);background:linear-gradient(160deg,#fff,#edf4ff);border:2px solid #8fb5ee;border-radius:25px;padding:27px 22px;text-align:center;box-shadow:0 24px 80px #0006}.celebration-icon{font-size:58px;line-height:1.2;margin:4px 0 13px;filter:drop-shadow(0 5px 4px #18345f30)}.celebration-kicker{font-size:10px;font-weight:900;letter-spacing:2px;color:#2c67c5}.celebration-box h2{font-size:23px;margin:8px 0;color:#172b49}.celebration-box p{font-size:13px;line-height:1.5;color:#62738d;margin:0 0 20px}.celebration-box button{min-width:150px}@keyframes celebrateIn{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+.modal{position:fixed;inset:0;background:#17281dcc;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.reset-modal{z-index:90}.reset-journey-card{border-color:#E8C5C5}.reset-journey-card h4{color:#8F2929}.modal-box{background:var(--paper);border-radius:20px;padding:18px;width:min(440px,100%);box-shadow:0 20px 60px #0004}.modal-box h3{margin:0 0 8px}.modal-actions{display:flex;gap:8px;margin-top:15px}.modal-actions button{flex:1}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#244F98;color:white;padding:12px 18px;border-radius:99px;font-size:12px;font-weight:900;display:none;z-index:30;box-shadow:0 8px 30px #0003}
+footer{text-align:center;color:#7789A5;font-size:9px;letter-spacing:1px;margin-top:22px}
+@media(min-width:600px){.app{padding-top:26px}.badges{grid-template-columns:repeat(3,1fr)}}
+
+/* Evergreen 2.1 — visual refinement */
+.app{max-width:720px;padding-left:17px;padding-right:17px}
+.hero{border-radius:22px;padding:22px}
+.hero-main{gap:15px;margin:15px 0 20px}
+.hero h2{font-size:24px}
+.hero .sub{font-size:12px;opacity:.82}
+.stats{gap:10px;margin:14px 0}
+.stat{padding:14px 13px;border-radius:17px;box-shadow:none}
+.stat b{font-size:24px}
+.stat span{font-size:10px;letter-spacing:.35px}
+.nav{gap:8px;margin:16px 0}
+.tab{padding:11px 14px;font-size:12px}
+.heading{margin:22px 0 11px}
+.heading h3{font-size:17px}
+.card{padding:16px;border-radius:18px;box-shadow:none}
+.quest{gap:13px}
+.quest-icon{width:44px;height:44px;border-radius:15px}
+.quest-body h4{font-size:14px}
+.quest-body p{display:none}
+.hint{font-size:11px}
+.heading .hint{display:none}
+.notice{display:none}
+.level-item small,.badge-card small{font-size:11px}
+.level-item{padding:12px;border-radius:15px}
+.level-item strong{font-size:13px}
+.badge-card{padding:16px 10px}
+@media(max-width:420px){
+ .app{padding-left:12px;padding-right:12px}
+ .hero{padding:17px}
+ .avatar{width:74px;height:74px;flex-basis:74px;border-radius:21px}
+ .stats{gap:7px}
+ .stat{padding:11px 9px}
+ .stat b{font-size:21px}
+ .stat span{font-size:9px}
+ .tab{padding:10px 12px}
+}
+
+
+
+.week-reset{display:flex;align-items:center;gap:9px;margin:0 0 12px;padding:10px 13px;border:1px solid #E8C5C5;border-radius:13px;background:#FBECEC;color:#8F2929;font-size:12px;font-weight:800}
+.week-reset .reset-icon{font-size:17px}
+.week-reset strong{color:#741D1D}
+.mission-explain{margin:-4px 0 10px;padding:0 2px;font-size:11px;line-height:1.45;color:var(--muted)}
+
+
+.daily-activities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-bottom:14px}
+.daily-activity{display:flex;align-items:center;justify-content:flex-start;gap:10px;min-height:58px;padding:12px;background:#fffdf7;border:1px solid var(--line);border-radius:15px;color:var(--ink);font:inherit;font-size:12px;font-weight:800;text-align:left;box-shadow:0 2px 0 rgba(35,59,45,.07);cursor:pointer;transition:background .15s,border-color .15s,transform .15s}
+.daily-activity:active{transform:translateY(1px)}
+.daily-activity .activity-emoji{font-size:22px}
+.daily-activity.done{background:#E5EEFC;border-color:#7FA6E5;color:#244F98;box-shadow:inset 0 0 0 1px #B9CFF0}
+.daily-activity.done:after{content:"✓";margin-left:auto;font-size:16px;color:#244F98}
+@media(max-width:420px){.daily-activities{grid-template-columns:1fr 1fr}.daily-activity{padding:10px 8px;font-size:11px}}
+.mastery-tasks{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px}
+.mastery-task{display:flex;align-items:center;gap:10px;min-height:58px;padding:11px 13px;background:#F2F5FA;border:1px solid var(--line);border-radius:15px;color:var(--ink);font:inherit;font-size:12px;line-height:1.35;text-align:left;font-weight:700;cursor:pointer;box-shadow:0 2px 0 rgba(35,59,45,.06);transition:background .15s,border-color .15s,transform .15s}
+.mastery-task:active{transform:translateY(1px)}
+.mastery-task .mastery-emoji{font-size:21px;flex:0 0 25px;text-align:center}
+.mastery-task.done{background:#E5EEFC;border-color:#7FA6E5;color:#244F98;box-shadow:inset 0 0 0 1px #B9CFF0}
+.mastery-task.done:after{content:"✓";margin-left:auto;font-size:16px;color:#244F98}
+@media(max-width:420px){.mastery-tasks{grid-template-columns:1fr}}
+
+
+
+
+/* 3.3.5 — calendário mensal da temporada */
+.season-card{padding:18px}
+.season-goal-row{margin:14px 0 12px;align-items:center}
+.season-goal-row strong{font-size:13px}
+.season-calendar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:7px}
+.season-weekday{text-align:center;color:var(--muted);font-size:10px;font-weight:900;padding:4px 0}
+.season-day{height:38px;border:1px solid var(--line);border-radius:11px;background:#F0F4FA;color:var(--ink);font:inherit;font-size:12px;font-weight:800;display:grid;place-items:center;position:relative}
+.season-day.empty{visibility:hidden}
+.season-day.completed{background:#2C67C5;border-color:#2458A8;color:white;box-shadow:inset 0 0 0 1px #A8C5F0}
+.season-day.today:not(.completed){border:2px solid var(--gold);background:#fff9e8}
+.season-day.today.completed{outline:2px solid var(--gold);outline-offset:1px}
+.season-day.future{opacity:.55}
+.season-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:11px}
+.season-legend span{display:flex;align-items:center;gap:6px}
+.legend-dot{width:10px;height:10px;border-radius:50%;display:inline-block;background:#2C67C5}
+.legend-dot.today{background:#fff9e8;border:2px solid var(--gold)}
+.season-record{margin-top:14px;padding:11px 13px;border-radius:12px;background:#EEF3FB;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--green)}
+@media(max-width:420px){.season-calendar{gap:5px}.season-day{height:34px;border-radius:9px;font-size:11px}.season-card{padding:13px}}
+
+
+
+/* 3.3.9 — feedback sonoro opcional */
+.sound-toggle{border:1px solid var(--line);border-radius:99px;padding:7px 11px;background:#F0F3F9;color:var(--green);font:inherit;font-size:11px;font-weight:800;cursor:pointer}
+.sound-toggle[aria-pressed="false"]{color:var(--muted);background:#E8EDF5}
+\n/* 3.3.8 — evolução visual das missões especiais */
+#specialQuests .special-card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:14px;margin:0 0 12px;box-shadow:var(--shadow)}
+.special-mission{padding:12px 0;transition:background .2s,border-color .2s}
+.special-mission:first-child{padding-top:2px}
+.special-mission+.special-mission{border-top:1px solid #E7ECF3}
+.special-mission .quest-icon{background:#EAF0F9}
+.special-mission.locked .quest-icon{filter:grayscale(1);opacity:.55}
+.special-progress{height:14px;width:100%;border-radius:99px;background:#E8E7DE;overflow:hidden;margin:10px 0 2px}
+.special-progress span{display:block;height:100%;border-radius:99px;background:#C9CED6;transition:width .25s}.special-mission.completed .special-progress span{background:linear-gradient(90deg,#3D78D0,#9BBDF0)}
+.special-claim.ready{background:#2C67C5;border-color:#2C67C5;color:#fff;box-shadow:0 2px 5px #2C67C533}
+.special-claim.claimed{background:#E7EBF1;border-color:#D2DAE6;color:#71819A;opacity:1}
+.special-claim.pending{background:#F1F4F8;border-color:#DCE4F0;color:#71819A}
+.mission-card-title{font-size:17px;font-weight:900;color:#172B49;margin:0 0 4px;letter-spacing:-.2px}
+.mission-card-subtitle{font-size:11px;color:var(--muted);line-height:1.45;margin:0 0 12px}
+.mission-card-heading{padding:2px 0 12px;margin-bottom:2px;border-bottom:1px solid #E7ECF3}
+/* Missões semanais em um único cartão */
+.weekly-card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:14px;margin:0 0 12px;box-shadow:var(--shadow)}
+.weekly-card .week-reset{margin:0 0 12px}
+.weekly-mission{padding:12px 0}
+.weekly-mission:first-of-type{padding-top:2px}
+.weekly-mission+.weekly-mission{border-top:1px solid #E7ECF3}
+.weekly-mission .quest{display:flex;align-items:center;gap:11px}
+.weekly-mission .weekly-progress-track{display:grid;grid-template-columns:repeat(var(--segments),minmax(0,1fr));gap:3px;width:100%;height:15px;margin:10px 0 2px;padding:0;border-radius:999px;background:#E8E7DE;overflow:hidden}
+.weekly-progress-segment{background:#E8E7DE;min-width:0}
+.weekly-progress-segment.filled{background:linear-gradient(90deg,#3D78D0,#9BBDF0)}
+.weekly-progress-segment:first-child{border-radius:999px 0 0 999px}
+.weekly-progress-segment:last-child{border-radius:0 999px 999px 0}
+.weekly-claim.ready{background:#2C67C5;border-color:#2C67C5;color:#fff;box-shadow:0 2px 5px #2C67C533}
+.weekly-claim.ready:hover{background:#2458A8;border-color:#2458A8}
+.weekly-claim.claimed{background:#E7EBF1;border-color:#D2DAE6;color:#71819A;opacity:1}
+.weekly-claim.pending{background:#F1F4F8;border-color:#DCE4F0;color:#71819A}
+/* Show explanatory copy only in weekly and special mission cards */
+#weeklyQuests .quest-body p,
+#specialQuests .quest-body p{
+  display:block !important;
+  font-size:11px;
+  line-height:1.45;
+  color:var(--muted);
+  margin-top:4px;
+}
+#weeklyQuests .card,
+#specialQuests .card{padding-bottom:15px}
+
+
+/* 3.2.2 — status da sincronização sempre visível */
+#cloud .heading .hint{display:inline-block!important;font-size:12px!important;font-weight:800;color:var(--green)!important;white-space:normal;text-align:right}
+#cloud .notice{display:block!important;margin:10px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:#f3f6ed;color:var(--ink);font-size:12px;line-height:1.45;min-height:42px}
+#cloud .heading{gap:12px}
+
+
+/* 3.2.4 — aviso de atualização do aplicativo */
+.update-banner{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);width:min(560px,calc(100% - 24px));display:none;align-items:center;gap:12px;padding:13px 14px;background:#18345F;color:#fff;border:1px solid #78966d;border-radius:16px;box-shadow:0 12px 35px #0004;z-index:50}
+.update-banner.show{display:flex}
+.update-banner .update-copy{flex:1;min-width:0;font-size:12px;line-height:1.4}
+.update-banner .update-copy strong{display:block;font-size:13px;margin-bottom:2px}
+.update-banner button{border:0;border-radius:10px;background:#dce9c9;color:#18345F;padding:10px 12px;font-weight:900;font-size:11px;white-space:nowrap}
+@media(max-width:420px){.update-banner{bottom:12px;gap:8px;padding:11px}.update-banner button{padding:9px;font-size:10px}}
+
+
+.dev-mode-card{border:1px dashed #9BB5D8;background:#F8FAFE}
+.dev-status{font-size:10px;font-weight:900;color:#71819A;background:#E8EDF4;border-radius:99px;padding:6px 9px;white-space:nowrap}
+.dev-status.active{background:#E4F3E9;color:#237A43}
+.dev-date-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.dev-date-actions button{min-height:38px}
+
+.stat-value-row{display:flex;align-items:center;gap:7px;min-height:30px}
+.stat-value-row b{font-size:24px;line-height:1.15;color:var(--green)}
+.stat-value-row .streak-fire{font-size:25px;line-height:1}
+</style>
+</head>
+<body>
+<div class="update-banner" id="updateBanner" role="status" aria-live="polite">
+ <div class="update-copy"><strong>🌱 Uma nova versão do MY JOURNEY está disponível!</strong>Atualize para receber melhorias e correções.</div>
+ <button type="button" id="updateNowBtn">Atualizar agora</button>
+</div>
+<div class="app">
+ <section class="hero">
+  <div class="eyebrow">SEU DIÁRIO DE AVENTURA</div>
+  <div class="hero-main"><div class="avatar"><img src="avatar.png" alt="Personagem aventureiro do MY JOURNEY"></div><div><h2>Paulo</h2><div class="sub" id="rank">Novato · Aventureiro iniciante</div></div></div>
+  <div class="level-line"><span id="levelTitle">NÍVEL 1 · NOVATO</span><strong id="xpLine">0 / 100 XP</strong></div>
+  <div class="bar"><span id="xpBar"></span></div>
+ </section>
+ <div class="stats">
+  <div class="stat"><b id="activeDays">0</b><span>DIAS ATIVOS NO MÊS</span></div>
+  <div class="stat"><b id="workoutCount">0</b><span>TREINOS REALIZADOS</span></div>
+  <div class="stat"><div class="stat-value-row"><b id="activeStreakCount">0</b><span id="activeStreakFire" class="streak-fire" title="Ofensiva atual de metas semanais">🔥</span></div><span>OFENSIVA ATUAL</span></div>
+ </div>
+ <div class="cloud-global" id="cloudGlobalStatus" role="status" aria-live="polite"><span class="cloud-dot"></span><div><strong id="cloudGlobalLabel">Backup não configurado</strong><span class="cloud-detail" id="cloudGlobalDetail">Conecte o Google Drive em Backup para sincronizar seus dispositivos.</span></div></div>
+ <nav class="nav">
+  <button class="tab active" data-tab="home">🏡 Início</button>
+  <button class="tab" data-tab="quests">📜 Missões</button>
+  <button class="tab" data-tab="levels">⭐ Níveis</button>
+  <button class="tab" data-tab="collection">🏅 Medalhas</button>
+  <button class="tab" data-tab="history">📖 Diário</button>
+ <button class="tab" data-tab="cloud">☁️ Backup</button>
+ </nav>
+
+ <section class="panel active" id="home">
+  <div class="heading"><h3>Olá, aventureiro!</h3><span class="hint" id="today"></span></div>
+  <div class="heading"><h3>Atividades diárias</h3></div>
+  <div id="dailyActivities" class="daily-activities"></div>
+  <div class="heading"><h3>Desafio especial</h3><span class="hint">30 dias consecutivos</span></div>
+  <div class="card" id="selfMasteryCard">
+   <div class="row"><div class="quest-icon">🎯</div><div style="flex:1"><strong style="font-size:14px">Domínio de Si</strong><p class="hint" style="margin:3px 0 0">Complete os 6 requisitos todos os dias. Uma falha reinicia a contagem.</p></div><b class="xp" id="masteryProgress">0 / 30</b></div>
+   <div class="bar" style="margin:12px 0"><span id="masteryBar"></span></div>
+   <div id="masteryTasks" class="mastery-tasks"></div>
+   <div class="row" style="margin-top:12px;align-items:center"><span class="hint" id="masteryStatus">Marque cada requisito ao cumprir.</span><span class="xp" id="masteryDay">Dia 1</span></div>
+   <div id="masteryMedal" style="display:none;text-align:center;margin-top:14px;padding:12px;background:#fff8e8;border-radius:14px">🏅 <strong>Medalha Domínio de Si conquistada!</strong></div>
+  </div>
+  <div class="heading"><h3 id="seasonTitle">Novembro de 2026</h3><span class="hint" id="seasonMonthLabel">Novembro de 2026</span></div>
+  <div class="card season-card">
+   <div id="seasonStatus" class="season-status active"><span class="dot"></span><span>Seu calendário de consistência</span></div>
+   <div class="row season-goal-row"><strong>Meta do mês</strong><b class="xp" id="seasonText">0 / 10 dias</b></div>
+   <div class="season-calendar" id="seasonCalendar" aria-label="Calendário mensal de treinos"></div>
+   <div class="season-legend"><span><i class="legend-dot completed"></i> Dia com treino</span><span><i class="legend-dot today"></i> Hoje</span></div>
+   <div class="season-record" id="seasonRecord">🏆 Seu recorde mensal: 0 dias</div>
+   <p class="hint" id="seasonHint">Registre musculação, natação, corrida ou outra modalidade para marcar um dia no calendário.</p>
+  </div>
+  <div class="notice">🌱 Sem pressa: descanso faz parte da aventura. Você nunca perde XP por pausar, descansar ou precisar reprogramar uma missão.</div>
+ </section>
+
+ <section class="panel" id="quests">
+  <div id="weeklyQuests"></div>
+  <div id="specialQuests"></div>
+ </section>
+
+ <section class="panel" id="levels">
+  <div class="heading"><h3>Trilha de evolução</h3><span class="hint">Até o nível 10</span></div>
+  <div class="card"><div class="row"><strong style="font-size:12px">Sua jornada até Guardião</strong><b class="xp" id="totalTo10">0 / 1.620 XP</b></div><div class="bar" style="margin:9px 0"><span id="longBar"></span></div><p class="hint">Cada nível exige um pouco mais de experiência. Seu progresso nunca é perdido.</p></div>
+  <div class="level-list" id="levelList"></div>
+ </section>
+
+ <section class="panel" id="collection">
+  <div class="heading"><h3>Medalhas conquistadas</h3><span class="hint" id="badgeCount">0 desbloqueadas</span></div>
+  <div class="badges" id="badgeGrid"></div>
+ </section>
+
+ <section class="panel" id="history">
+  <div class="heading"><h3>Diário de aventura</h3><span class="hint">Edite ou desfaça registros</span></div>
+  <div class="card" id="historyList"><p class="hint">Seu diário ainda está em branco. A primeira aventura espera por você!</p></div>
+  <div class="card"><h4 style="margin:0 0 8px;font-size:13px">Backup do progresso</h4><p class="hint">Exporte uma cópia dos seus dados para guardar.</p><button class="secondary full" id="exportData">Exportar progresso (JSON)</button></div>
+  <div class="card reset-journey-card"><h4 style="margin:0 0 8px;font-size:13px">Recomeçar do zero</h4><p class="hint">Apague seu progresso atual e inicie uma nova jornada.</p><button class="danger full" type="button" onclick="openResetJourney()">↻ Reiniciar jornada</button></div>
+  <div class="card dev-mode-card">
+   <div class="row" style="align-items:center;justify-content:space-between"><div><h4 style="margin:0 0 5px;font-size:14px">🛠️ Modo desenvolvedor</h4><p class="hint" style="margin:0">Simule a passagem dos dias para testar semanas, meses, missões e sequências.</p></div><span id="devModeStatus" class="dev-status">Desativado</span></div>
+   <button class="secondary full" id="devModeToggle" type="button" style="margin-top:12px" onclick="toggleDevMode()">Ativar modo desenvolvedor</button>
+   <div id="devModeControls" style="display:none;margin-top:13px">
+    <label class="label" for="devDatePicker">Data simulada</label>
+    <input id="devDatePicker" type="date" style="width:100%;margin-bottom:10px">
+    <div class="dev-date-actions">
+     <button class="secondary" type="button" onclick="shiftDevDate(-1)">− 1 dia</button>
+     <button class="secondary" type="button" onclick="shiftDevDate(1)">+ 1 dia</button>
+     <button class="secondary" type="button" onclick="shiftDevDate(7)">+ 7 dias</button>
+     <button class="secondary" type="button" onclick="shiftDevDate(30)">+ 30 dias</button>
+    </div>
+    <div style="border-top:1px solid #D5E0F0;margin-top:13px;padding-top:12px">
+     <strong style="font-size:12px">Teste de evolução</strong>
+     <p class="hint" style="margin:4px 0 9px">Avance diretamente para o próximo nível e teste o pop-up e o som de conquista.</p>
+     <button class="primary full" type="button" onclick="devLevelUp()">🚀 Subir 1 nível</button>
+    </div>
+    <button class="danger full" type="button" style="margin-top:10px" onclick="disableDevMode()">Voltar para a data real</button>
+    <p class="hint" style="margin:10px 0 0">Atenção: atividades e marcações feitas durante a simulação recebem a data simulada. Os dados continuam salvos normalmente.</p>
+   </div>
+  </div>
+ </section>
+
+ <section class="panel" id="cloud">
+  <div class="heading"><h3>Proteja sua jornada</h3><span class="hint" id="cloudStatus">Backup não configurado</span></div>
+  <div class="card"><h4 style="margin:0 0 6px;font-size:13px">Sincronização com Google Drive</h4>
+   <p class="hint">Conecte seu Google Drive uma única vez. O MY JOURNEY salvará uma cópia do seu progresso automaticamente, sem criar conta no aplicativo.</p>
+   <label class="label">Código secreto</label><input id="driveSecret" type="password" placeholder="O mesmo código definido no Apps Script" autocomplete="off">
+   <label class="label">URL do aplicativo Google (Apps Script)</label><input id="driveUrl" type="url" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="url">
+   <button class="primary full" id="saveDriveConfigBtn" style="margin-top:10px" type="button">Salvar e conectar</button>
+   <button class="secondary full" id="driveSyncNowBtn" style="margin-top:8px" type="button">Sincronizar agora</button>
+   <p class="notice" id="cloudMessage">Seus dados continuam salvos neste dispositivo. Configure o Google Drive para ativar o backup automático.</p></div>
+  <div class="card"><h4 style="margin:0 0 6px;font-size:13px">Configuração inicial</h4><p class="hint">No ZIP há um guia rápido e o código do Google Apps Script. Crie o script na sua conta Google, implante como aplicativo da Web e cole a URL aqui.</p><button class="secondary full" onclick="exportDataNow()">Exportar uma cópia de segurança</button></div>
+ </section>
+ <footer>MY JOURNEY · GROW EVERY DAY</footer>
+</div>
+
+<div class="modal" id="editModal"><div class="modal-box"><h3>Editar atividade</h3><label class="label">Tipo de atividade</label><select id="editType"><option value="gym">Musculação</option><option value="swim">Natação</option><option value="run">Corrida</option><option value="other">Outra modalidade</option><option value="walk">Caminhada de 20 min</option><option value="mobility">Mobilidade de 10 min</option></select><label class="label">Data</label><input type="date" id="editDate"><div class="modal-actions"><button class="secondary" onclick="closeEdit()">Cancelar</button><button class="primary" onclick="saveEdit()">Salvar alterações</button></div></div></div>
+<div class="modal reset-modal" id="resetJourneyModal" role="dialog" aria-modal="true" aria-labelledby="resetJourneyTitle"><div class="modal-box"><div style="font-size:30px;margin-bottom:8px">⚠️</div><h3 id="resetJourneyTitle">Tem certeza que deseja reiniciar?</h3><p class="hint" style="font-size:12px;line-height:1.55">Se continuar, todo o seu progresso será apagado: XP, atividades do diário, níveis, medalhas, missões e o desafio Domínio de Si. Essa ação não poderá ser desfeita.</p><div class="modal-actions"><button class="secondary" type="button" onclick="closeResetJourney()">Cancelar</button><button class="danger" type="button" onclick="confirmResetJourney()">Sim, reiniciar</button></div></div></div>
+<div class="celebration" id="celebration" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle"><div class="celebration-box"><div class="celebration-kicker" id="celebrationKicker">CONQUISTA DESBLOQUEADA</div><div class="celebration-icon" id="celebrationIcon">🏅</div><h2 id="celebrationTitle">Nova conquista!</h2><p id="celebrationDesc"></p><button class="primary" onclick="closeCelebration()">Continuar jornada</button></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const KEY='evergreen-rpg-v2';
+const LEVELS=[
+ {name:'Novato',xp:730,avatar:'🧝',reward:'Túnica do Novato'},
+ {name:'Explorador',xp:840,avatar:'🧝‍♂️',reward:'Mochila do Explorador'},
+ {name:'Aventureiro',xp:950,avatar:'🧝‍♂️',reward:'Botas de Aventura'},
+ {name:'Aprendiz de Guerreiro',xp:1060,avatar:'🧝‍♂️',reward:'Vila dos Aventureiros'},
+ {name:'Guerreiro',xp:1170,avatar:'🛡️',reward:'Armadura do Guerreiro'},
+ {name:'Guardião',xp:1280,avatar:'🛡️',reward:'Capa do Guardião'},
+ {name:'Campeão',xp:1390,avatar:'⚔️',reward:'Bosque dos Guardiões'},
+ {name:'Cavaleiro',xp:1490,avatar:'⚔️',reward:'Escudo do Campeão'},
+ {name:'Herói',xp:1600,avatar:'🏹',reward:'Armadura Heroica'},
+ {name:'Guardião da Jornada',xp:0,avatar:'👑',reward:'Castelo da Jornada'}
+];
+const TOTAL_TO_10=10510;
+const ACTIVITIES={gym:{label:'Musculação',icon:'🏋️',xp:50,workout:true},swim:{label:'Natação',icon:'🏊',xp:50,workout:true},run:{label:'Corrida',icon:'🏃',xp:50,workout:true},other:{label:'Outra modalidade',icon:'🥋',xp:50,workout:true},walk:{label:'Caminhada de 20 min',icon:'🚶',xp:15,workout:false},mobility:{label:'Mobilidade de 10 min',icon:'🧘',xp:10,workout:false}};
+const countType=(s,type)=>s.entries.filter(e=>e.type===type).length;
+const uniqueWorkoutTypes=s=>new Set(workoutEntries(s).map(e=>e.type)).size;
+const ACHIEVEMENTS=[
+ {id:'first',icon:'🌱',name:'Primeiro broto',desc:'Registre seu primeiro treino.',test:s=>workoutEntries(s).length>=1},
+ {id:'five',icon:'🥉',name:'Criando raízes',desc:'Complete 5 atividades de treino.',test:s=>workoutEntries(s).length>=5},
+ {id:'ten',icon:'🥈',name:'Em crescimento',desc:'Complete 10 atividades de treino.',test:s=>workoutEntries(s).length>=10},
+ {id:'thirty',icon:'🥇',name:'Árvore forte',desc:'Complete 30 atividades de treino.',test:s=>workoutEntries(s).length>=30},
+ {id:'fifty',icon:'🌳',name:'Floresta em expansão',desc:'Complete 50 atividades de treino.',test:s=>workoutEntries(s).length>=50},
+ {id:'hundred',icon:'🏆',name:'Lenda da Jornada',desc:'Complete 100 atividades de treino.',test:s=>workoutEntries(s).length>=100},
+ {id:'weekly',icon:'🔥',name:'Semana florescida',desc:'Complete 3 atividades de treino na mesma semana.',test:s=>weeklyWorkoutCount(s)>=3},
+ {id:'gym1',icon:'🏋️',name:'Força desperta',desc:'Registre seu primeiro treino de musculação.',test:s=>countType(s,'gym')>=1},
+ {id:'gym10',icon:'💪',name:'Braços de aço',desc:'Complete 10 treinos de musculação.',test:s=>countType(s,'gym')>=10},
+ {id:'gym25',icon:'🛡️',name:'Força consistente',desc:'Complete 25 treinos de musculação.',test:s=>countType(s,'gym')>=25},
+ {id:'swim1',icon:'🏊',name:'Águas novas',desc:'Registre sua primeira sessão de natação.',test:s=>countType(s,'swim')>=1},
+ {id:'swim5',icon:'🐬',name:'Amigo das águas',desc:'Complete 5 sessões de natação.',test:s=>countType(s,'swim')>=5},
+ {id:'swim15',icon:'🌊',name:'Senhor das marés',desc:'Complete 15 sessões de natação.',test:s=>countType(s,'swim')>=15},
+ {id:'run1',icon:'👟',name:'Primeiros passos',desc:'Registre sua primeira corrida.',test:s=>countType(s,'run')>=1},
+ {id:'run5',icon:'🏃',name:'Ritmo encontrado',desc:'Complete 5 corridas.',test:s=>countType(s,'run')>=5},
+ {id:'run10',icon:'⚡',name:'Pernas velozes',desc:'Complete 10 corridas.',test:s=>countType(s,'run')>=10},
+ {id:'run25',icon:'🪽',name:'Espírito corredor',desc:'Complete 25 corridas.',test:s=>countType(s,'run')>=25},
+ {id:'other1',icon:'🥋',name:'Novos caminhos',desc:'Experimente outra modalidade pela primeira vez.',test:s=>countType(s,'other')>=1},
+ {id:'variety',icon:'🎨',name:'Espírito versátil',desc:'Experimente as quatro modalidades principais.',test:s=>uniqueWorkoutTypes(s)>=4},
+ {id:'walk',icon:'🚶',name:'Pé na trilha',desc:'Faça sua primeira caminhada.',test:s=>countType(s,'walk')>=1},
+ {id:'walk10',icon:'🥾',name:'Caminhante',desc:'Faça 10 caminhadas.',test:s=>countType(s,'walk')>=10},
+ {id:'mobility1',icon:'🧘',name:'Corpo em equilíbrio',desc:'Registre sua primeira sessão de mobilidade.',test:s=>countType(s,'mobility')>=1},
+ {id:'mobility10',icon:'🍃',name:'Leveza no caminho',desc:'Complete 10 sessões de mobilidade.',test:s=>countType(s,'mobility')>=10},
+ {id:'season',icon:'🏅',name:'Primeiro Grande Retorno',desc:'Complete 10 atividades de treino na Temporada 01.',test:s=>s.entries.filter(e=>isWorkout(e)&&e.date>='2026-11-06'&&e.date<='2026-12-06').length>=10},
+ {id:'mastery30',icon:'🎯',name:'Domínio de Si',desc:'Complete os 30 dias do desafio especial.',test:()=>!!mastery.medal},
+ {id:'level5',icon:'⭐',name:'Aventureiro experiente',desc:'Alcance o nível 5.',test:s=>levelInfo(s.xp).level>=5},
+ {id:'level10',icon:'👑',name:'Guardião da Jornada',desc:'Alcance o nível 10.',test:s=>levelInfo(s.xp).level>=10}
+];
+let state=load(),editingId=null;
+let lastKnownLevel=levelInfo(state.xp).level;
+let celebrationQueue=[],celebrationOpen=false;
+function fresh(){return {xp:0,entries:[],unlocked:[],createdAt:new Date().toISOString()}}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))||fresh()}catch(e){return fresh()}}
+function save(){const currentLevel=levelInfo(state.xp).level;if(currentLevel>lastKnownLevel){for(let n=lastKnownLevel+1;n<=currentLevel;n++){const level=LEVELS[n-1];queueCelebration({kind:'level',icon:level.avatar||'⭐',kicker:'SUBIU DE NÍVEL',title:'Nível '+n+' alcançado!',desc:'Você chegou ao nível '+n+' — '+level.name+'. '+(level.reward?'Nova recompensa: '+level.reward+'.':'Continue evoluindo!')})}}lastKnownLevel=currentLevel;localStorage.setItem(KEY,JSON.stringify(state));render();scheduleCloudSave()}
+const DEV_MODE_KEY='myjourney-dev-mode-v1',DEV_DATE_KEY='myjourney-dev-date-v1';
+function realIsoNow(){let d=new Date();return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
+function isoNow(){return localStorage.getItem(DEV_MODE_KEY)==='1'?(localStorage.getItem(DEV_DATE_KEY)||realIsoNow()):realIsoNow()}
+function dateShift(iso,days){let d=new Date(iso+'T12:00:00');d.setDate(d.getDate()+days);return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function toggleDevMode(){if(localStorage.getItem(DEV_MODE_KEY)==='1'){disableDevMode();return}localStorage.setItem(DEV_MODE_KEY,'1');if(!localStorage.getItem(DEV_DATE_KEY))localStorage.setItem(DEV_DATE_KEY,realIsoNow());render();toast('Modo desenvolvedor ativado.')}
+function disableDevMode(){localStorage.removeItem(DEV_MODE_KEY);localStorage.removeItem(DEV_DATE_KEY);render();toast('Data real restaurada.')}
+function shiftDevDate(days){if(localStorage.getItem(DEV_MODE_KEY)!=='1')return;localStorage.setItem(DEV_DATE_KEY,dateShift(isoNow(),days));render();toast('Data simulada: '+fmt(isoNow()));}
+function devLevelUp(){if(localStorage.getItem(DEV_MODE_KEY)!=='1'){toast('Ative o modo desenvolvedor primeiro.');return}const info=levelInfo(state.xp);if(info.level>=10){toast('Você já alcançou o nível máximo!');return}state.xp+=info.next-info.rem;save();toast('Nível avançado para '+levelInfo(state.xp).level+'!');}
+function setDevDate(value){if(localStorage.getItem(DEV_MODE_KEY)!=='1'||!/^\d{4}-\d{2}-\d{2}$/.test(value))return;localStorage.setItem(DEV_DATE_KEY,value);render();toast('Data simulada: '+fmt(isoNow()));}
+function renderDevMode(){const active=localStorage.getItem(DEV_MODE_KEY)==='1';const status=document.getElementById('devModeStatus'),toggle=document.getElementById('devModeToggle'),controls=document.getElementById('devModeControls'),picker=document.getElementById('devDatePicker');if(!status)return;status.textContent=active?'Ativado':'Desativado';status.classList.toggle('active',active);toggle.textContent=active?'Modo desenvolvedor ativado':'Ativar modo desenvolvedor';controls.style.display=active?'block':'none';if(active&&picker)picker.value=isoNow();}
+function weekStart(date){let d=new Date(date+'T12:00:00');d.setDate(d.getDate()-(d.getDay()+6)%7);return new Date(d.getTime()-d.getTimezoneOffset()*60000).toISOString().slice(0,10)}
+function isWorkout(e){return !!(ACTIVITIES[e.type]&&ACTIVITIES[e.type].workout)}
+function workoutEntries(s=state){return s.entries.filter(isWorkout)}
+function weeklyWorkoutCount(s=state){let groups={};workoutEntries(s).forEach(e=>{let k=weekStart(e.date);groups[k]=(groups[k]||0)+1});return Math.max(0,...Object.values(groups))}
+function levelInfo(xp){let rem=xp,level=1;for(let i=0;i<9;i++){if(rem>=LEVELS[i].xp){rem-=LEVELS[i].xp;level++}else break}return {level,rem,next:level===10?0:LEVELS[level-1].xp}}
+function fmt(d){return new Date(d+'T12:00:00').toLocaleDateString('pt-BR',{day:'2-digit',month:'short',year:'numeric'})}
+const SOUND_KEY='myjourney-sounds-enabled';
+let soundsEnabled=true;
+localStorage.setItem(SOUND_KEY,'true');
+let soundContext=null;
+function playTone(freq,duration,volume=0.045,type='sine',delay=0){
+ if(!soundsEnabled)return;
+ try{
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return;
+  soundContext=soundContext||new AudioCtx();
+  if(soundContext.state==='suspended')soundContext.resume();
+  const osc=soundContext.createOscillator(),gain=soundContext.createGain();
+  osc.type=type;osc.frequency.setValueAtTime(freq,soundContext.currentTime+delay);
+  gain.gain.setValueAtTime(0.0001,soundContext.currentTime+delay);
+  gain.gain.exponentialRampToValueAtTime(volume,soundContext.currentTime+delay+0.012);
+  gain.gain.exponentialRampToValueAtTime(0.0001,soundContext.currentTime+delay+duration);
+  osc.connect(gain);gain.connect(soundContext.destination);
+  osc.start(soundContext.currentTime+delay);osc.stop(soundContext.currentTime+delay+duration+0.02);
+ }catch(e){}
+}
+function playClick(){playTone(520,.055,.022,'sine')}
+function playConfirm(){playTone(660,.10,.035,'sine');playTone(880,.13,.03,'sine',.09)}
+function playReward(){playTone(523,.16,.045,'triangle');playTone(659,.16,.045,'triangle',.12);playTone(784,.2,.05,'triangle',.24);playTone(1047,.32,.05,'triangle',.38)}
+async function playCelebration(){
+ if(!soundsEnabled)return;
+ try{
+  const AudioCtx=window.AudioContext||window.webkitAudioContext;
+  if(!AudioCtx)return;
+  soundContext=soundContext||new AudioCtx();
+  if(soundContext.state==='suspended')await soundContext.resume();
+  const notes=[
+   [523,.22,0],[659,.22,.16],[784,.25,.32],[1047,.32,.49],
+   [784,.20,.76],[1047,.30,.91],[1318,.48,1.13]
+  ];
+  notes.forEach(([freq,duration,delay],i)=>{
+   const osc=soundContext.createOscillator(),gain=soundContext.createGain();
+   osc.type=i===6?'sine':'triangle';
+   osc.frequency.setValueAtTime(freq,soundContext.currentTime+delay);
+   gain.gain.setValueAtTime(.0001,soundContext.currentTime+delay);
+   gain.gain.exponentialRampToValueAtTime(i===6?.075:.06,soundContext.currentTime+delay+.015);
+   gain.gain.exponentialRampToValueAtTime(.0001,soundContext.currentTime+delay+duration);
+   osc.connect(gain);gain.connect(soundContext.destination);
+   osc.start(soundContext.currentTime+delay);osc.stop(soundContext.currentTime+delay+duration+.03);
+  });
+ }catch(e){console.warn('Não foi possível reproduzir o som da conquista.',e)}
+}
+let celebrationTimer=null;
+function queueCelebration(item){
+ celebrationQueue.push(item);
+ if(!celebrationOpen&&!celebrationTimer)celebrationTimer=setTimeout(()=>{celebrationTimer=null;showNextCelebration()},250);
+}
+function showNextCelebration(){
+ if(celebrationOpen||!celebrationQueue.length)return;
+ const modal=document.getElementById('celebration');
+ if(!modal){console.error('Janela de conquista não encontrada.');return}
+ const item=celebrationQueue.shift();
+ document.getElementById('celebrationKicker').textContent=item.kicker;
+ document.getElementById('celebrationIcon').textContent=item.icon;
+ document.getElementById('celebrationTitle').textContent=item.title;
+ document.getElementById('celebrationDesc').textContent=item.desc;
+ modal.classList.add('show');
+ celebrationOpen=true;
+ playCelebration();
+}
+function closeCelebration(){document.getElementById('celebration').classList.remove('show');celebrationOpen=false;setTimeout(showNextCelebration,220)}
+function toggleSounds(){
+ soundsEnabled=!soundsEnabled;localStorage.setItem(SOUND_KEY,String(soundsEnabled));
+ updateSoundToggle();if(soundsEnabled)playConfirm();
+}
+function updateSoundToggle(){
+ const b=document.getElementById('soundToggle');if(!b)return;
+ b.textContent=soundsEnabled?'🔊 Sons ligados':'🔇 Sons desligados';b.setAttribute('aria-pressed',String(soundsEnabled));
+}
+function toast(t){let el=document.getElementById('toast');el.textContent=t;el.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.style.display='none',2400)}
+function addEntry(type,date){
+ if(!date){toast('Escolha uma data.');return}
+ if(state.entries.some(e=>e.date===date&&e.type===type)){toast('Essa atividade já foi registrada nessa data.');return}
+ const xp=ACTIVITIES[type].xp;state.entries.push({id:Date.now()+Math.random(),type,date,xp});state.xp+=xp;
+ toast('Missão concluída! +'+xp+' XP');
+ save();
+ // The medal/level celebration takes priority over the ordinary activity sound.
+ if(!celebrationOpen&&celebrationQueue.length===0)playReward();
+}
+function removeEntry(id){let e=state.entries.find(x=>String(x.id)===String(id));if(!e)return;if(!confirm('Excluir este registro e recalcular seu XP?'))return;state.entries=state.entries.filter(x=>String(x.id)!==String(id));recalculate();toast('Registro removido e XP recalculado.');save()}
+function recalculate(){
+ // Recalcula atividades e bônus sem permitir que uma recompensa de nível
+ // seja usada para desbloquear a si própria.
+ const acts=state.entries.filter(e=>ACTIVITIES[e.type]);
+ acts.forEach(e=>e.xp=ACTIVITIES[e.type].xp);
+ const workoutCount=acts.filter(e=>ACTIVITIES[e.type].workout).length;
+ let rewards=state.entries.filter(e=>!ACTIVITIES[e.type] && e.type!=='weeklybonus');
+ rewards=rewards.filter(r=>{
+   if(r.type.startsWith('special-')) return workoutCount>=Number(r.type.split('-')[1]);
+   if(r.type.startsWith('weekly-')){
+     let parts=r.type.split('-'),week=parts.slice(1,4).join('-'),missionId=parts.slice(4).join('-');
+     return weeklyMissionComplete(missionId,week,{...state,entries:acts});
+   }
+   if(r.type.startsWith('level-')) return true;
+   return true;
+ });
+ // Atualiza o valor salvo dos bônus semanais/especiais para a tabela vigente.
+ const weeklyXP={target:50,variety2:35,run1:30,swim1:30,gym2:30,walk2:20,mobility2:20,other1:30,threeDays:35};
+ const specialXP={5:50,10:100,20:100,30:150,50:200,75:250,100:300,150:400};
+ const levelXP={3:40,5:60,7:80,10:150};
+ rewards.forEach(r=>{
+   if(r.type.startsWith('weekly-')){const id=r.type.split('-').slice(4).join('-');if(weeklyXP[id]!=null)r.xp=weeklyXP[id];}
+   else if(r.type.startsWith('special-')){const goal=Number(r.type.split('-')[1]);if(specialXP[goal]!=null)r.xp=specialXP[goal];}
+ });
+ // Bônus de nível são validados em sequência usando apenas XP já legitimamente obtido.
+ let xp=acts.reduce((sum,e)=>sum+e.xp,0)+rewards.filter(r=>!r.type.startsWith('level-')).reduce((sum,e)=>sum+(Number(e.xp)||0),0);
+ const validLevelRewards=[];
+ rewards.filter(r=>r.type.startsWith('level-')).sort((a,b)=>Number(a.type.split('-')[1])-Number(b.type.split('-')[1])).forEach(r=>{
+   const level=Number(r.type.split('-')[1]);
+   if(levelInfo(xp).level>=level){r.xp=levelXP[level]||0;validLevelRewards.push(r);xp+=r.xp;}
+ });
+ state.entries=[...acts,...rewards.filter(r=>!r.type.startsWith('level-')),...validLevelRewards];
+ state.xp=state.entries.reduce((sum,e)=>sum+(Number(e.xp)||0),0);
+}
+function openEdit(id){let e=state.entries.find(x=>String(x.id)===String(id));if(!e||e.type==='weeklybonus')return;editingId=id;document.getElementById('editType').value=e.type;document.getElementById('editDate').value=e.date;document.getElementById('editModal').classList.add('show')}
+function closeEdit(){document.getElementById('editModal').classList.remove('show');editingId=null}
+function saveEdit(){let e=state.entries.find(x=>String(x.id)===String(editingId));if(!e)return;let type=document.getElementById('editType').value,date=document.getElementById('editDate').value;if(!date){toast('Escolha uma data.');return}if(state.entries.some(x=>String(x.id)!==String(editingId)&&x.type===type&&x.date===date)){toast('Já existe essa atividade nessa data.');return}e.type=type;e.date=date;recalculate();closeEdit();toast('Atividade atualizada.');save()}
+const CELEBRATED_KEY='myjourney-celebrated-achievements-v1';
+function checkAchievements(){
+ if(!Array.isArray(state.unlocked))state.unlocked=[];
+ let celebrated=[];
+ try{celebrated=JSON.parse(localStorage.getItem(CELEBRATED_KEY)||'[]')}catch(e){celebrated=[]}
+ const earnedIds=ACHIEVEMENTS.filter(a=>a.test(state)).map(a=>a.id);
+ const earnedSet=new Set(earnedIds);
+ let changed=false;
+ // If a medal stops meeting its requirement (for example, after deleting diary
+ // entries), clear its claimed/unlocked flag so it can be earned and celebrated again.
+ const nextUnlocked=state.unlocked.filter(id=>earnedSet.has(id));
+ if(nextUnlocked.length!==state.unlocked.length){state.unlocked=nextUnlocked;changed=true}
+ const nextCelebrated=celebrated.filter(id=>earnedSet.has(id));
+ earnedIds.forEach(id=>{
+  if(!state.unlocked.includes(id)){state.unlocked.push(id);changed=true}
+  if(!nextCelebrated.includes(id)){
+   const a=ACHIEVEMENTS.find(item=>item.id===id);
+   queueCelebration({kind:'medal',icon:a.icon,kicker:'MEDALHA CONQUISTADA',title:a.name,desc:a.desc});
+   nextCelebrated.push(id);
+  }
+ });
+ if(changed)localStorage.setItem(KEY,JSON.stringify(state));
+ localStorage.setItem(CELEBRATED_KEY,JSON.stringify(nextCelebrated));
+}
+function seasonInfo(date=isoNow()){
+ const d=new Date(date+'T12:00:00'),base=new Date(2026,10,1);
+ const monthIndex=(d.getFullYear()-base.getFullYear())*12+(d.getMonth()-base.getMonth());
+ const index=Math.max(0,monthIndex),goal=Math.min(20,10+index*2);
+ const names=['O Retorno','Criando raízes','Ganhando ritmo','Consistência','Força e disciplina','Aventura constante'];
+ return {index,number:index+1,goal,title:names[index]||'Jornada constante',year:d.getFullYear(),month:d.getMonth()};
+}
+function monthWorkoutDays(year,month){
+ const prefix=year+'-'+String(month+1).padStart(2,'0')+'-';
+ return new Set(state.entries.filter(e=>isWorkout(e)&&e.date.startsWith(prefix)).map(e=>Number(e.date.slice(8,10))));
+}
+function renderSeasonCalendar(){
+ const today=isoNow(),info=seasonInfo(today),first=new Date(info.year,info.month,1),daysInMonth=new Date(info.year,info.month+1,0).getDate();
+ const activeDays=monthWorkoutDays(info.year,info.month),recordByMonth={};
+ state.entries.filter(e=>isWorkout(e)).forEach(e=>{const key=e.date.slice(0,7);if(!recordByMonth[key])recordByMonth[key]=new Set();recordByMonth[key].add(e.date)});
+ const record=Math.max(0,...Object.values(recordByMonth).map(set=>set.size));
+ const monthKey=info.year+'-'+String(info.month+1).padStart(2,'0');
+ const names=['janeiro','fevereiro','março','abril','maio','junho','julho','agosto','setembro','outubro','novembro','dezembro'];
+ const weekdays=['D','S','T','Q','Q','S','S'];
+ document.getElementById('seasonTitle').textContent=names[info.month].charAt(0).toUpperCase()+names[info.month].slice(1)+' de '+info.year;
+ document.getElementById('seasonMonthLabel').textContent=names[info.month].charAt(0).toUpperCase()+names[info.month].slice(1)+' de '+info.year;
+ document.getElementById('seasonText').textContent=activeDays.size+' / '+info.goal+' dias';
+ let cells=weekdays.map(d=>`<div class="season-weekday">${d}</div>`).join('');
+ for(let i=0;i<first.getDay();i++)cells+='<div class="season-day empty" aria-hidden="true"></div>';
+ for(let day=1;day<=daysInMonth;day++){
+  const date=monthKey+'-'+String(day).padStart(2,'0'),completed=activeDays.has(day),isToday=date===today,future=date>today;
+  cells+=`<button type="button" class="season-day ${completed?'completed':''} ${isToday?'today':''} ${future?'future':''}" aria-label="${day} de ${names[info.month]}${completed?', treino registrado':''}" title="${completed?'Treino registrado':future?'Dia futuro':'Nenhum treino registrado'}">${day}</button>`;
+ }
+ document.getElementById('seasonCalendar').innerHTML=cells;
+ document.getElementById('seasonRecord').textContent='🏆 Seu recorde mensal: '+record+' dias';
+ document.getElementById('seasonHint').textContent=activeDays.size>=info.goal?'Meta mensal alcançada! Continue registrando treinos para superar seu recorde.':'Registre musculação, natação, corrida ou outra modalidade para marcar um dia no calendário.';
+ document.getElementById('seasonStatus').innerHTML=`<span class="dot"></span><span>Meta do mês: ${info.goal} dias</span>`;
+}
+function renderDailyActivities(){
+ const today=isoNow();
+ const items=Object.entries(ACTIVITIES);
+ document.getElementById('dailyActivities').innerHTML=items.map(([type,a])=>{
+  const done=state.entries.some(e=>e.type===type&&e.date===today);
+  return `<button type="button" class="daily-activity ${done?'done':''}" onclick="quickAdd('${type}')" aria-pressed="${done}"><span class="activity-emoji">${a.icon}</span><span>${a.label}</span></button>`;
+ }).join('');
+}
+function render(){
+ let li=levelInfo(state.xp),level=LEVELS[li.level-1];
+ document.getElementById('totalXp').textContent=state.xp;document.getElementById('workoutCount').textContent=workoutEntries().length;
+ document.getElementById('activeDays').textContent=new Set(state.entries.filter(e=>e.type!=='weeklybonus'&&e.date&&e.date.slice(0,7)===isoNow().slice(0,7)).map(e=>e.date)).size;
+ const streak=weeklyStreakInfo();
+ const streakCount=document.getElementById('activeStreakCount');
+ if(streakCount)streakCount.textContent=streak.current;
+ const flame=document.getElementById('activeStreakFire');
+ if(flame){
+  flame.style.display='inline-block';flame.classList.toggle('active',streak.isRecord);
+  flame.title=streak.isRecord?`🔥 ${streak.current} ${streak.current===1?'semana':'semanas'} consecutivas cumprindo a meta semanal`:'Registre treinos e cumpra a meta semanal para iniciar sua ofensiva';
+ }
+ document.getElementById('levelTitle').textContent='NÍVEL '+li.level+' · '+level.name.toUpperCase();
+ document.getElementById('rank').textContent=level.name+' · '+(li.level===1?'Aventureiro iniciante':li.level<5?'Explorador em formação':li.level<10?'Herói em ascensão':'Guardião do reino');
+
+ document.getElementById('xpLine').textContent=li.level===10?'NÍVEL MÁXIMO':' '+li.rem+' / '+li.next+' XP';
+ document.getElementById('xpBar').style.width=li.level===10?'100%':(li.rem/li.next*100)+'%';
+ document.getElementById('totalTo10').textContent=Math.min(state.xp,TOTAL_TO_10).toLocaleString('pt-BR')+' / 1.620 XP';
+ document.getElementById('longBar').style.width=Math.min(100,state.xp/TOTAL_TO_10*100)+'%';
+ renderSeasonCalendar();renderDevMode();
+ document.getElementById('today').textContent=new Date(isoNow()+'T12:00:00').toLocaleDateString('pt-BR',{weekday:'short',day:'2-digit',month:'short'})+(localStorage.getItem(DEV_MODE_KEY)==='1'?' · SIMULAÇÃO':'');
+ renderDailyActivities();renderQuests();renderMastery();renderLevels();renderBadges();renderHistory();
+ checkAchievements();
+}
+function questCard(icon,title,desc,xp,action,button='Registrar'){
+ return `<div class="card"><div class="quest"><div class="quest-icon">${icon}</div><div class="quest-body"><h4>${title}</h4><p>${desc}</p></div><span class="xp">+${xp} XP</span></div>${action?`<button class="secondary tiny full" style="margin-top:10px" onclick="${action}">${button}</button>`:''}</div>`
+}
+
+const MASTERY_KEY='evergreen-mastery-v1';
+const MASTERY_TASKS=['Primeira hora do dia sem celular','Nenhuma rede social durante o dia','Última hora antes de dormir sem telas','Não consumir açúcar adicionado','Não consumir fast food','30 minutos de atividade física'];
+function loadMastery(){try{return JSON.parse(localStorage.getItem(MASTERY_KEY))||{days:{},medal:false}}catch(e){return {days:{},medal:false}}}
+let mastery=loadMastery();
+function masteryDone(date){return (mastery.days[date]||[]).length===6}
+function masteryStreak(){
+ let d=new Date(isoNow()+'T12:00:00');
+ if(!masteryDone(isoNow())) d.setDate(d.getDate()-1);
+ let count=0;
+ for(let i=0;i<40;i++){let key=new Date(d.getTime()-i*86400000);let iso=key.getFullYear()+'-'+String(key.getMonth()+1).padStart(2,'0')+'-'+String(key.getDate()).padStart(2,'0');if(masteryDone(iso))count++;else break}
+ return count;
+}
+function toggleMastery(index,checked){
+ let today=isoNow(),items=[...(mastery.days[today]||[])],wasComplete=items.length===6;
+ if(checked&&!items.includes(index))items.push(index);
+ if(!checked)items=items.filter(x=>x!==index);
+ mastery.days[today]=items;
+ if(!wasComplete&&items.length===6)playReward();
+ if(masteryStreak()>=30)mastery.medal=true;
+ localStorage.setItem(MASTERY_KEY,JSON.stringify(mastery));
+ if(mastery.medal){playReward();checkAchievements();renderBadges();save();}
+ renderMastery();
+ scheduleCloudSave();
+}
+function renderMastery(){
+ let today=isoNow(),items=mastery.days[today]||[],done=items.length,streak=masteryStreak();
+ let progress=Math.min(30,streak+(masteryDone(today)?0:0));
+ document.getElementById('masteryProgress').textContent=(mastery.medal?'30':Math.min(streak,30))+' / 30';
+ document.getElementById('masteryBar').style.width=(mastery.medal?100:Math.min(100,streak/30*100))+'%';
+ document.getElementById('masteryDay').textContent=mastery.medal?'Concluído':`Hoje: ${done}/6`;
+ document.getElementById('masteryStatus').textContent=mastery.medal?'Desafio concluído!':(done===6?'Dia cumprido! Volte amanhã.':`${6-done} requisitos restantes hoje`);
+ const masteryIcons=['📵','📱','🌙','🍬','🍔','🏃'];
+ document.getElementById('masteryTasks').innerHTML=MASTERY_TASKS.map((t,i)=>{const checked=items.includes(i);return `<button type="button" class="mastery-task ${checked?'done':''}" aria-pressed="${checked}" onclick="toggleMastery(${i},${!checked})"><span class="mastery-emoji">${masteryIcons[i]}</span><span>${t}</span></button>`}).join('');
+ document.getElementById('masteryMedal').style.display=mastery.medal?'block':'none';
+}
+
+
+function weeklyTargetForLevel(level=levelInfo(state.xp).level){
+ if(level<=3)return 3;
+ if(level<=6)return 4;
+ return 5;
+}
+function weeklyStreakInfo(s=state){
+ const target=weeklyTargetForLevel();
+ const currentWeek=weekStart(isoNow());
+ const counts={};
+ workoutEntries(s).forEach(e=>{const key=weekStart(e.date);counts[key]=(counts[key]||0)+1});
+ const keyFor=d=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+ const meets=key=>(counts[key]||0)>=target;
+ const hasWorkout= (counts[currentWeek]||0)>0;
+ // Count completed target-weeks immediately before the current week.
+ let cursor=new Date(currentWeek+'T12:00:00');
+ cursor.setDate(cursor.getDate()-7);
+ let previous=0;
+ while(meets(keyFor(cursor))){
+  previous++;
+  cursor.setDate(cursor.getDate()-7);
+ }
+ // The current week is considered active after the first workout.
+ // If a streak already exists, it stays alive until this week closes,
+ // even while the user is still working toward the weekly target.
+ const active=hasWorkout||previous>0;
+ const current=active?previous+(hasWorkout?1:0):0;
+ return {current,record:current,isRecord:active};
+}
+function weekNumber(week){
+ const d=new Date(week+'T12:00:00'),first=new Date(d.getFullYear(),0,1);
+ return Math.floor((d-first)/604800000);
+}
+function weekActivityEntries(week,s=state){return s.entries.filter(e=>isWorkout(e)&&weekStart(e.date)===week)}
+function weeklyMissionPool(){
+ return [
+  {id:'variety2',icon:'🎨',title:'Explorador de modalidades',desc:'Faça treinos de 2 modalidades principais diferentes nesta semana.',xp:35,done:(w,s)=>new Set(weekActivityEntries(w,s).map(e=>e.type)).size>=2,progress:(w,s)=>Math.min(2,new Set(weekActivityEntries(w,s).map(e=>e.type)).size),goal:2},
+  {id:'run1',icon:'🏃',title:'Pés na estrada',desc:'Inclua pelo menos uma corrida na sua semana.',xp:30,done:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='run'),progress:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='run')?1:0,goal:1},
+  {id:'swim1',icon:'🏊',title:'Mergulho semanal',desc:'Faça pelo menos uma sessão de natação nesta semana.',xp:30,done:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='swim'),progress:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='swim')?1:0,goal:1},
+  {id:'gym2',icon:'🏋️',title:'Força em construção',desc:'Faça 2 sessões de musculação nesta semana.',xp:30,done:(w,s)=>weekActivityEntries(w,s).filter(e=>e.type==='gym').length>=2,progress:(w,s)=>Math.min(2,weekActivityEntries(w,s).filter(e=>e.type==='gym').length),goal:2},
+  {id:'walk2',icon:'🚶',title:'Passos tranquilos',desc:'Registre 2 caminhadas de 20 minutos nesta semana.',xp:20,done:(w,s)=>s.entries.filter(e=>e.type==='walk'&&weekStart(e.date)===w).length>=2,progress:(w,s)=>Math.min(2,s.entries.filter(e=>e.type==='walk'&&weekStart(e.date)===w).length),goal:2},
+  {id:'mobility2',icon:'🧘',title:'Corpo em equilíbrio',desc:'Faça 2 sessões de mobilidade nesta semana.',xp:20,done:(w,s)=>s.entries.filter(e=>e.type==='mobility'&&weekStart(e.date)===w).length>=2,progress:(w,s)=>Math.min(2,s.entries.filter(e=>e.type==='mobility'&&weekStart(e.date)===w).length),goal:2},
+  {id:'other1',icon:'🥋',title:'Novos caminhos',desc:'Experimente outra modalidade nesta semana.',xp:30,done:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='other'),progress:(w,s)=>weekActivityEntries(w,s).some(e=>e.type==='other')?1:0,goal:1},
+  {id:'threeDays',icon:'📅',title:'Ritmo constante',desc:'Distribua seus treinos em 3 dias diferentes nesta semana.',xp:35,done:(w,s)=>new Set(weekActivityEntries(w,s).map(e=>e.date)).size>=3,progress:(w,s)=>Math.min(3,new Set(weekActivityEntries(w,s).map(e=>e.date)).size),goal:3}
+ ];
+}
+function currentWeeklyMissions(week=weekStart(isoNow())){
+ const pool=weeklyMissionPool(),idx=weekNumber(week)%pool.length;
+ return [
+  {id:'target',icon:'🌿',title:'Meta da semana',desc:`Complete ${weeklyTargetForLevel()} atividades de treino nesta semana.`,xp:50,goal:weeklyTargetForLevel(),progress:(w,s)=>Math.min(weeklyTargetForLevel(),weekActivityEntries(w,s).length),done:(w,s)=>weekActivityEntries(w,s).length>=weeklyTargetForLevel()},
+  pool[idx],
+  pool[(idx+3)%pool.length]
+ ];
+}
+function weeklyMissionComplete(id,week,s=state){
+ const m=currentWeeklyMissions(week).find(x=>x.id===id);
+ return !!(m&&m.done(week,s));
+}
+
+function weeklyResetText(){
+ const now=new Date();
+ const simParts=isoNow().split('-').map(Number);
+ now.setFullYear(simParts[0],simParts[1]-1,simParts[2]);
+ const daysUntilMonday=(8-now.getDay())%7||7;
+ const reset=new Date(now.getFullYear(),now.getMonth(),now.getDate()+daysUntilMonday,0,0,0,0);
+ const hoursLeft=Math.max(0,Math.ceil((reset-now)/3600000));
+ const days=Math.floor(hoursLeft/24),hours=hoursLeft%24;
+ let remaining=days?`${days} ${days===1?'dia':'dias'}${hours?` e ${hours}h`:''}`:`${hours}h`;
+ return `A semana reinicia na segunda-feira · faltam <strong>${remaining}</strong>`;
+}
+function renderQuests(){
+ let wk=weekStart(isoNow()),weekly=currentWeeklyMissions(wk);
+ const reset=weeklyResetText();
+ document.getElementById('weeklyQuests').innerHTML=`<div class="weekly-card"><div class="mission-card-heading"><h3 class="mission-card-title">Missões semanais</h3><p class="mission-card-subtitle">Bônus por consistência · São metas que você precisa cumprir dentro da mesma semana. Ao atingir a meta, resgate o bônus de XP.</p></div><div class="week-reset" aria-live="polite"><span class="reset-icon">⏳</span><span>${reset}</span></div>${weekly.map(m=>{
+  let done=m.done(wk,state),claimed=state.entries.some(e=>e.type===`weekly-${wk}-${m.id}`);
+  let prog=m.progress(wk,state);
+  const description=m.desc;
+  const segments=Array.from({length:Math.max(1,m.goal)},(_,i)=>`<span class="weekly-progress-segment ${i<prog?'filled':''}" aria-hidden="true"></span>`).join('');
+  const claimState=claimed?'claimed':done?'ready':'pending';
+  return `<div class="weekly-mission"><div class="quest"><div class="quest-icon">${m.icon}</div><div class="quest-body"><h4>${m.title}</h4><p>${description}</p></div><span class="xp">+${m.xp} XP</span></div><div class="weekly-progress-track" style="--segments:${Math.max(1,m.goal)}" role="img" aria-label="${prog} de ${m.goal} etapas concluídas">${segments}</div><button class="secondary tiny full weekly-claim ${claimState}" style="margin-top:10px" ${!done||claimed?'disabled':''} onclick="claimWeekly('${m.id}')">${claimed?'Bônus resgatado':done?'Resgatar bônus':'Em andamento'}</button></div>`;
+ }).join('')}</div>`;
+ let count=workoutEntries().length,li=levelInfo(state.xp).level;
+ let specials=[
+  {title:'Primeiro passo',desc:'Registre sua primeira atividade de treino.',goal:1,reward:0},
+  {title:'Criando raízes',desc:'Complete 5 atividades de treino ao longo da jornada.',goal:5,reward:50},
+  {title:'Árvore forte',desc:'Complete 10 atividades de treino.',goal:10,reward:100},
+  {title:'Tronco resistente',desc:'Complete 20 atividades de treino.',goal:20,reward:100},
+  {title:'Floresta viva',desc:'Complete 30 atividades de treino.',goal:30,reward:150},
+  {title:'Floresta em expansão',desc:'Complete 50 atividades de treino.',goal:50,reward:200},
+  {title:'Guardião da mata',desc:'Complete 75 atividades de treino.',goal:75,reward:250},
+  {title:'Lenda da Jornada',desc:'Complete 100 atividades de treino.',goal:100,reward:300},
+  {title:'Espírito indomável',desc:'Complete 150 atividades de treino.',goal:150,reward:400}
+ ];
+ let levelMissions=[
+  {level:3,title:'A trilha se abre',desc:'Alcance o nível 3 e prove que sua jornada ganhou raízes.',reward:40},
+  {level:5,title:'Força de guerreiro',desc:'Alcance o nível 5 e desbloqueie este marco de evolução.',reward:60},
+  {level:7,title:'Guardião do bosque',desc:'Alcance o nível 7 e torne-se protetor do bosque.',reward:80},
+  {level:10,title:'Lenda do reino',desc:'Alcance o nível 10: torne-se Guardião da Jornada.',reward:150}
+ ];
+ document.getElementById('specialQuests').innerHTML=`<div class="weekly-card special-card"><div class="mission-card-heading"><h3 class="mission-card-title">Missões especiais</h3><p class="mission-card-subtitle">Conquistas únicas · Marcos acumulados ao longo da jornada. Ao alcançar os objetivos, desbloqueie recompensas especiais.</p></div>`+
+ specials.map(m=>{let done=count>=m.goal,claimed=state.entries.some(e=>e.type==='special-'+m.goal),progress=Math.min(100,count/m.goal*100),progressText=m.goal===1?m.desc:`${m.desc} (${Math.min(count,m.goal)} de ${m.goal})`,claimState=claimed?'claimed':done?'ready':'pending';return `<div class="special-mission ${done?'completed':'locked'}"><div class="quest"><div class="quest-icon">${done?'🌟':'🔒'}</div><div class="quest-body"><h4>${m.title}</h4><p>${progressText}</p></div><span class="xp">${m.reward?`+${m.reward} XP`:done?'CONCLUÍDA':'MARCO'}</span></div><div class="special-progress" role="img" aria-label="${Math.min(count,m.goal)} de ${m.goal} atividades concluídas"><span style="width:${progress}%"></span></div>${m.reward&&done?`<button class="secondary tiny full special-claim ${claimState}" style="margin-top:10px" ${claimed?'disabled':''} onclick="claimSpecial(${m.goal},${m.reward})">${claimed?'Recompensa resgatada':'Resgatar recompensa'}</button>`:''}</div>`}).join('')+
+ levelMissions.map(m=>{let done=li>=m.level,claimed=state.entries.some(e=>e.type==='level-'+m.level),requiredXP=LEVELS.slice(0,m.level-1).reduce((sum,item)=>sum+item.xp,0),progress=requiredXP?Math.min(100,state.xp/requiredXP*100):0,claimState=claimed?'claimed':done?'ready':'pending';return `<div class="special-mission ${done?'completed':'locked'}"><div class="quest"><div class="quest-icon">${done?'🏅':'🔒'}</div><div class="quest-body"><h4>${m.title}</h4><p>${m.desc}</p></div><span class="xp">+${m.reward} XP</span></div><div class="special-progress" role="img" aria-label="Nível ${li} de ${m.level}"><span style="width:${progress}%"></span></div>${done?`<button class="secondary tiny full special-claim ${claimState}" style="margin-top:10px" ${claimed?'disabled':''} onclick="claimLevel(${m.level},${m.reward})">${claimed?'Recompensa resgatada':'Resgatar recompensa'}</button>`:''}</div>`}).join('')+`</div>`;
+}
+function claimWeekly(id){
+ let week=weekStart(isoNow()),m=currentWeeklyMissions(week).find(x=>x.id===id);
+ if(!m||!m.done(week,state)){toast('Missão ainda não concluída.');return}
+ let key=`weekly-${week}-${id}`;
+ if(state.entries.some(e=>e.type===key)){toast('Bônus já resgatado.');return}
+ state.entries.push({id:Date.now()+Math.random(),type:key,label:'Bônus semanal',date:isoNow(),xp:m.xp});
+ state.xp+=m.xp;toast('Bônus semanal resgatado! +'+m.xp+' XP');playReward();save()
+}
+function claimLevel(level,reward){
+ if(levelInfo(state.xp).level<level)return;
+ let key='level-'+level;if(state.entries.some(e=>e.type===key)){toast('Recompensa já resgatada.');return}
+ state.entries.push({id:Date.now()+Math.random(),type:key,label:'Recompensa de nível',date:isoNow(),xp:reward});
+ state.xp+=reward;toast('Marco de nível conquistado! +'+reward+' XP');playReward();save()
+}
+function claimSpecial(goal,reward){let count=workoutEntries().length;if(count<goal)return;let key='special-'+goal;if(state.entries.some(e=>e.type===key)){toast('Recompensa já resgatada.');return}state.entries.push({id:Date.now()+Math.random(),type:key,label:'Recompensa especial',date:isoNow(),xp:reward});state.xp+=reward;toast('Recompensa especial! +'+reward+' XP');playReward();save()}
+function quickAdd(type){addEntry(type,isoNow())}
+function renderLevels(){
+ let li=levelInfo(state.xp);
+ document.getElementById('levelList').innerHTML=LEVELS.map((l,i)=>{
+  const current=li.level===i+1;
+  const passed=li.level>i+1||li.level===10;
+  const status=current?'current':passed?'passed':'locked';
+  return `<div class="level-item ${status}"><div class="level-number">${i+1}</div><div class="desc"><strong>${l.name}</strong><small>${i===9?'Grande conquista':l.xp+' XP para avançar'} · ${l.reward}</small></div><span>${passed?'✓':current?'★':'🔒'}</span></div>`;
+ }).join('');
+}
+function renderBadges(){let n=ACHIEVEMENTS.filter(a=>a.test(state)).length;document.getElementById('badgeCount').textContent=n+' desbloqueadas';document.getElementById('badgeGrid').innerHTML=ACHIEVEMENTS.map(a=>`<div class="badge-card ${a.test(state)?'unlocked':''}"><div class="medal">${a.icon}</div><strong>${a.name}</strong><small>${a.desc}</small></div>`).join('')}
+function openResetJourney(){
+ playAlert();
+ document.getElementById('resetJourneyModal').classList.add('show');
+}
+function closeResetJourney(){document.getElementById('resetJourneyModal').classList.remove('show')}
+function playAlert(){
+ if(!soundsEnabled)return;
+ playTone(440,.16,.055,'square');
+ playTone(330,.20,.055,'square',.18);
+ playTone(220,.28,.06,'triangle',.40);
+}
+function confirmResetJourney(){
+ closeResetJourney();
+ state=fresh();
+ state.unlocked=[];
+ mastery={days:{},medal:false};
+ localStorage.setItem(KEY,JSON.stringify(state));
+ localStorage.setItem(MASTERY_KEY,JSON.stringify(mastery));
+ localStorage.removeItem('myjourney-celebrated-achievements-v1');
+ lastKnownLevel=1;
+ render();
+ renderMastery();
+ renderBadges();
+ renderLevels();
+ toast('Jornada reiniciada. Um novo começo!');
+ scheduleCloudSave();
+}
+function renderHistory(){
+ let arr=[...state.entries].sort((a,b)=>b.date.localeCompare(a.date));
+ document.getElementById('historyList').innerHTML=arr.length?arr.map(e=>{let activity=ACTIVITIES[e.type];let label=activity?activity.label:(e.label|| (e.type==='weeklybonus'?'Bônus semanal':'Recompensa'));let icon=activity?activity.icon:'🎁';let editable=!!activity;return `<div class="history row"><div style="flex:1">${icon} <strong>${label}</strong><small>${fmt(e.date)}</small></div><b class="xp">+${e.xp} XP</b><div style="display:flex;gap:5px">${editable?`<button class="secondary tiny" onclick="openEdit('${e.id}')">Editar</button>`:''}<button class="danger" onclick="removeEntry('${e.id}')">Excluir</button></div></div>`}).join(''):'<p class="hint">Seu diário ainda está em branco. A primeira aventura espera por você!</p>';
+}
+function switchTab(id){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===id))}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+
+function exportDataNow(){let blob=new Blob([JSON.stringify(state,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='my-journey-progresso.json';a.click();URL.revokeObjectURL(url)}
+document.getElementById('exportData').addEventListener('click',exportDataNow);
+document.getElementById('devDatePicker').addEventListener('change',e=>setDevDate(e.target.value));
+
+// Google Drive backup via Google Apps Script. Local data remains the source of truth.
+const DRIVE_CONFIG_KEY='evergreen-drive-config-v1';
+let cloudSaveTimer=null,cloudSyncing=false;
+function driveConfig(){try{return JSON.parse(localStorage.getItem(DRIVE_CONFIG_KEY))||{}}catch(e){return {}}}
+function setCloudMessage(msg,status){
+ const m=document.getElementById('cloudMessage'),s=document.getElementById('cloudStatus');
+ if(m)m.textContent=msg;if(s)s.textContent=status||'—';
+ const global=document.getElementById('cloudGlobalStatus'),label=document.getElementById('cloudGlobalLabel'),detail=document.getElementById('cloudGlobalDetail');
+ if(global&&label&&detail){
+  const st=(status||'').toLowerCase();
+  global.classList.remove('synced','connected','syncing','error','conflict');
+  if(/sincronizado|backup confirmado|tudo atualizado/.test(st)){global.classList.add('synced');label.textContent='Sincronizado';}
+  else if(/conectado|configurado/.test(st)){global.classList.add('connected');label.textContent='Google Drive conectado';}
+  else if(/enviando|conectando|aguardando backup/.test(st)){global.classList.add('syncing');label.textContent=st==='enviando'?'Sincronizando…':(status||'Sincronizando…');}
+  else if(/conflito/.test(st)){global.classList.add('conflict');label.textContent='Atenção: conflito de sincronização';}
+  else if(/falha|erro|sem conexão|verifique/.test(st)){global.classList.add('error');label.textContent=status||'Problema na sincronização';}
+  else{label.textContent=status||'Status do backup';}
+  detail.textContent=msg||'';
+ }
+}
+async function saveDriveConfig(){
+ const url=document.getElementById('driveUrl').value.trim(),secret=document.getElementById('driveSecret').value.trim();
+ if(secret.length<20){setCloudMessage('Código secreto inválido: use exatamente o mesmo código do Apps Script (mínimo 20 caracteres).','Verifique o código');return}
+ if(!/^https:\/\/script\.google\.com\/macros\/s\/[A-Za-z0-9_-]+\/exec(?:\?.*)?$/.test(url)){setCloudMessage('URL inválida. Copie a URL do Aplicativo da Web, terminada em /exec.','Verifique a URL');return}
+ localStorage.setItem(DRIVE_CONFIG_KEY,JSON.stringify({url,secret}));
+ setCloudMessage('Dados salvos. Testando a conexão com o Google…','Conectando');
+ const btn=document.getElementById('saveDriveConfigBtn');if(btn){btn.disabled=true;btn.textContent='Conectando…'}
+ try{await driveInitialSync()}finally{if(btn){btn.disabled=false;btn.textContent='Salvar e conectar'}}
+}
+function initCloudUI(){const c=driveConfig();const el=document.getElementById('driveUrl');if(el)el.value=c.url||'';const sec=document.getElementById('driveSecret');if(sec)sec.value=c.secret||'';if(c.url){setCloudMessage('Google Drive configurado neste aparelho.','Configurado');startDrivePolling()}}
+function driveRead(){return new Promise((resolve,reject)=>{
+ const c=driveConfig();if(!c.url)return reject(new Error('Configure primeiro a URL do Google Apps Script.'));
+ const callback='evergreenDrive_'+Date.now()+'_'+Math.floor(Math.random()*1e6);const script=document.createElement('script');let timer;
+ window[callback]=data=>{clearTimeout(timer);delete window[callback];script.remove();if(data&&data.ok)resolve(data);else reject(new Error(data?.error||'Não foi possível ler o backup.'))};
+ script.onerror=()=>{clearTimeout(timer);delete window[callback];script.remove();reject(new Error('Falha ao acessar o Google Drive. Confira a implantação e as permissões.'))};
+ script.src=c.url+(c.url.includes('?')?'&':'?')+'action=read&secret='+encodeURIComponent(c.secret)+'&callback='+callback+'&t='+Date.now();timer=setTimeout(()=>{delete window[callback];script.remove();reject(new Error('Tempo esgotado ao consultar o Google Drive.'))},15000);document.head.appendChild(script);
+ })}
+const DRIVE_DEVICE_KEY='evergreen-drive-device-v1';
+const DRIVE_VERSION_KEY='evergreen-drive-version-v1';
+const DRIVE_DIRTY_KEY='evergreen-drive-dirty-v1';
+function driveDeviceId(){let id=localStorage.getItem(DRIVE_DEVICE_KEY);if(!id){id='dev-'+Date.now()+'-'+Math.random().toString(36).slice(2);localStorage.setItem(DRIVE_DEVICE_KEY,id)}return id}
+let drivePollTimer=null,driveLastVersion=localStorage.getItem(DRIVE_VERSION_KEY)||'',driveDirty=localStorage.getItem(DRIVE_DIRTY_KEY)==='1',driveApplyingRemote=false;
+async function driveWrite(){
+ const c=driveConfig();if(!c.url)throw new Error('Configure primeiro a URL do Google Apps Script.');
+ const version=driveDeviceId()+'-'+Date.now()+'-'+Math.random().toString(36).slice(2);
+ localStorage.setItem(DRIVE_DIRTY_KEY,'1');driveDirty=true;
+ await fetch(c.url,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action:'write',secret:c.secret,data:{state,mastery},version,deviceId:driveDeviceId()})});
+ localStorage.setItem('evergreen-drive-pending-version',version);
+ setCloudMessage('Backup enviado. Aguardando a confirmação na próxima verificação.','Enviando');
+}
+function applyCloudData(data){
+ if(data&&data.state){
+  state=data.state;
+  mastery=data.mastery||{days:{},medal:false};
+  localStorage.setItem(MASTERY_KEY,JSON.stringify(mastery));
+ }else{
+  state=data;
+ }
+ localStorage.setItem(KEY,JSON.stringify(state));
+ driveApplyingRemote=true;render();renderMastery();driveApplyingRemote=false;
+}
+async function pollDrive(){
+ if(cloudSyncing||!driveConfig().url||document.hidden)return;
+ try{
+  const result=await driveRead();
+  if(!result.data){setCloudMessage('Backup ainda não encontrado no Drive.','Aguardando backup');return}
+  const remote=result.data;
+  const remoteVersion=remote.version||'legacy';
+  const pending=localStorage.getItem('evergreen-drive-pending-version')||'';
+  if(pending&&remoteVersion===pending){
+    driveDirty=false;localStorage.removeItem(DRIVE_DIRTY_KEY);localStorage.removeItem('evergreen-drive-pending-version');
+    driveLastVersion=remoteVersion;localStorage.setItem(DRIVE_VERSION_KEY,remoteVersion);
+    setCloudMessage('Backup confirmado no Google Drive.','Sincronizado');return;
+  }
+  if(remoteVersion!==driveLastVersion){
+    if(driveDirty){setCloudMessage('Há alterações locais ainda não confirmadas e uma atualização no Drive. Use “Sincronizar agora” para resolver.','Conflito de alterações');return}
+    if(remote.data){applyCloudData(remote.data)}
+    driveLastVersion=remoteVersion;localStorage.setItem(DRIVE_VERSION_KEY,remoteVersion);
+    setCloudMessage('Progresso atualizado pelo outro dispositivo.','Sincronizado');
+  }else if(!driveDirty){setCloudMessage('Tudo atualizado com o Google Drive.','Sincronizado')}
+ }catch(e){setCloudMessage('Não foi possível verificar o Drive: '+e.message,'Sem conexão')}
+}
+function startDrivePolling(){if(drivePollTimer)clearInterval(drivePollTimer);if(driveConfig().url){pollDrive();drivePollTimer=setInterval(pollDrive,20000)}}
+async function driveInitialSync(){
+ try{
+  const result=await driveRead();
+  if(result.data){
+   const remote=result.data;
+   if(remote.data){const cloudData=remote.data;const cloudState=cloudData.state||cloudData;const localHas=state.entries.length>0||state.xp>0||Object.keys((mastery&&mastery.days)||{}).length>0;const cloudHas=(cloudState.entries||[]).length>0||(cloudState.xp||0)>0||Object.keys((cloudData.mastery&&cloudData.mastery.days)||{}).length>0;
+    if(cloudHas&&localHas){const restore=confirm('Encontramos um progresso salvo no Google Drive. OK = restaurar o backup. Cancelar = enviar o progresso deste aparelho.');if(restore)applyCloudData(cloudData);else await driveWrite()}
+    else if(cloudHas)applyCloudData(cloudData);else await driveWrite();
+    driveLastVersion=remote.version||'legacy';localStorage.setItem(DRIVE_VERSION_KEY,driveLastVersion);
+   }else{ // Compatibilidade com o backup antigo (antes da versão 3.2)
+    const cloudData=remote;const cloudHas=(cloudData.entries||[]).length>0||(cloudData.xp||0)>0;
+    if(cloudHas){const restore=confirm('Encontramos seu backup antigo no Drive. Deseja restaurá-lo neste aparelho?');if(restore)applyCloudData(cloudData);else await driveWrite()}else await driveWrite();
+   }
+  }else await driveWrite();
+  setCloudMessage('Conexão com o Google confirmada. O MY JOURNEY verificará atualizações a cada 20 segundos.','Conectado');
+  startDrivePolling();
+ }catch(e){setCloudMessage('Não foi possível conectar: '+e.message,'Falha na conexão')}
+}
+async function driveSyncNow(){
+ if(cloudSyncing)return;cloudSyncing=true;setCloudMessage('Verificando o backup e sincronizando este aparelho…','Sincronizando');
+ try{
+  const result=await driveRead();
+  if(result.data&&result.data.data){const useCloud=confirm('Encontramos um backup no Drive. OK = restaurar o backup. Cancelar = manter este aparelho e enviar seus dados.');if(useCloud){applyCloudData(result.data.data);driveLastVersion=result.data.version||'';localStorage.setItem(DRIVE_VERSION_KEY,driveLastVersion);driveDirty=false;localStorage.removeItem(DRIVE_DIRTY_KEY);setCloudMessage('Backup restaurado.','Sincronizado')}else await driveWrite()}
+  else if(result.data){const useCloud=confirm('Encontramos um backup antigo. OK = restaurar. Cancelar = enviar os dados deste aparelho.');if(useCloud)applyCloudData(result.data);else await driveWrite()}
+  else await driveWrite();
+ }catch(e){setCloudMessage(e.message,'Erro de sincronização')}finally{cloudSyncing=false;startDrivePolling()}
+}
+function scheduleCloudSave(){if(!driveConfig().url||driveApplyingRemote)return;driveDirty=true;localStorage.setItem(DRIVE_DIRTY_KEY,'1');clearTimeout(cloudSaveTimer);cloudSaveTimer=setTimeout(()=>driveWrite().catch(e=>setCloudMessage('Backup local preservado. '+e.message,'Falha no backup')),1200)}
+
+function seedCalendar(){}
+recalculate();render();initCloudUI();
+document.getElementById('saveDriveConfigBtn')?.addEventListener('click',saveDriveConfig);
+document.getElementById('driveSyncNowBtn')?.addEventListener('click',driveSyncNow);
+// 3.2.4 — detecta novas versões e oferece atualização sem apagar o progresso
+if('serviceWorker' in navigator){
+ window.addEventListener('load', async ()=>{
+  try{
+   const registration=await navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'});
+   const banner=document.getElementById('updateBanner');
+   const updateBtn=document.getElementById('updateNowBtn');
+   let refreshing=false;
+   const showUpdate=()=>{if(registration.waiting && navigator.serviceWorker.controller)banner?.classList.add('show')};
+   registration.addEventListener('updatefound',()=>{
+    const installing=registration.installing;
+    if(!installing)return;
+    installing.addEventListener('statechange',()=>{
+     if(installing.state==='installed' && navigator.serviceWorker.controller)showUpdate();
+    });
+   });
+   showUpdate();
+   // Ignora o cache HTTP ao verificar se o servidor publicou uma nova versão.
+   registration.update().catch(()=>{});
+   document.addEventListener('visibilitychange',()=>{
+    if(document.visibilityState==='visible')registration.update().catch(()=>{});
+   });
+   updateBtn?.addEventListener('click',()=>{
+    if(registration.waiting){updateBtn.disabled=true;updateBtn.textContent='Atualizando…';registration.waiting.postMessage({type:'SKIP_WAITING'});}
+   });
+   navigator.serviceWorker.addEventListener('controllerchange',()=>{
+    if(refreshing)return;refreshing=true;window.location.reload();
+   });
+  }catch(e){/* O MY JOURNEY continua funcionando mesmo se a atualização automática falhar. */}
+ });
+}
+</script>
+</body></html>

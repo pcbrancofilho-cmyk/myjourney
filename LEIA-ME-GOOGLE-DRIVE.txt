@@ -1,0 +1,22 @@
+EVERGREEN 3.2.3 — SINCRONIZAÇÃO ENTRE DISPOSITIVOS
+
+IMPORTANTE: esta versão atualiza também o código do Google Apps Script.
+1. Abra o projeto existente em https://script.google.com/
+2. Substitua TODO o conteúdo pelo arquivo GOOGLE_APPS_SCRIPT.gs incluído neste ZIP.
+3. Na primeira linha de configuração, coloque exatamente o mesmo código secreto já usado no Evergreen.
+4. Salve.
+5. Vá em Implantar > Gerenciar implantações > Editar (lápis) > Versão: Nova versão > Implantar.
+6. Mantenha o acesso como Qualquer pessoa e copie a URL /exec. Se a URL não mudar, não precisa alterar o campo no Evergreen.
+
+No Evergreen, mantenha a URL e o código secreto já cadastrados. Publique a pasta evergreen no Netlify e atualize a página.
+
+COMO FUNCIONA
+- O app envia alterações automaticamente.
+- Enquanto estiver aberto, consulta o Drive a cada 20 segundos.
+- Ao detectar alterações feitas no outro dispositivo, atualiza o progresso local.
+- Se houver alterações locais ainda não confirmadas e uma mudança remota simultânea, ele avisa em vez de sobrescrever silenciosamente.
+
+LIMITAÇÃO
+Não é instantâneo: a atualização entre aparelhos pode levar até cerca de 20 segundos. O navegador precisa estar aberto e conectado à internet para sincronizar.
+
+VERSÃO 3.2.3: agora o backup inclui também as marcações diárias do desafio Domínio de Si, além dos treinos e XP.

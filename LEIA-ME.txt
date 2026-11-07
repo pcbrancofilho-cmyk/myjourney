@@ -1,0 +1,38 @@
+MY JOURNEY — GROW EVERY DAY
+Versão 3.4.35
+
+PUBLICAÇÃO
+1. Extraia este ZIP.
+2. No Cloudflare Pages, envie a pasta evergreen (a pasta que contém index.html, manifest.json, sw.js e os assets).
+3. Abra o endereço publicado e confira o funcionamento.
+
+O QUE MUDOU NESTA VERSÃO
+- Nome e identidade visual MY JOURNEY, com símbolo de foguete.
+- Atividades diárias na tela inicial, em botões que indicam quando foram registradas.
+- Home reorganizada: atividades diárias, Domínio de Si e Temporada.
+- Aba Missões contém somente missões semanais e especiais.
+- Barras de progresso nas missões semanais.
+- Desafio Domínio de Si com botões clicáveis e emojis.
+- Avatar 3D adulto inspirado em jogos esportivos de console.
+- Barras das missões semanais segmentadas, sem texto numérico de progresso.
+- Calendário mensal sem nomenclatura de temporadas; banner simplificado para “Meta do mês: X dias”.
+- Removido caractere literal “\\n” exibido abaixo do calendário.
+- Missões especiais com cartões verdes ao concluir e barras cinzas de evolução enquanto bloqueadas.
+- Removido “Progresso 1/1” da missão de primeiro treino.\n- Som original de conquista restaurado ao registrar atividades e ao concluir os seis requisitos do desafio especial.
+- Interface inteiramente repaginada em tons de azul, com cor principal RGB 44, 103, 197 (#2C67C5).
+- Identidade visual atualizada para tons de azul, com cor principal RGB 44, 103, 197 (#2C67C5).
+- Sons de recompensa mantidos, com controle para ligar/desligar.
+- Cabeçalho superior removido para simplificar a interface.
+- Desafio Domínio de Si com ícone de alvo e medalha própria ao completar 30 dias.
+- Meta mensal progressiva de 10 a 20 dias e recorde mensal.
+- Mantidas as regras de XP: modalidades principais = 50 XP; caminhada = 15 XP; mobilidade = 10 XP.
+
+DADOS E SINCRONIZAÇÃO
+As chaves internas antigas de armazenamento e o protocolo do Google Apps Script foram mantidos para preservar a compatibilidade com o progresso existente e com o backup. Não apague os dados do navegador. Recomenda-se exportar um backup antes de publicar uma nova versão.
+
+ARQUIVOS
+- index.html: aplicativo.
+- manifest.json: identificação do PWA.
+- sw.js: cache e atualização.
+- icon.svg: ícone do MY JOURNEY.
+- GOOGLE_APPS_SCRIPT.gs e LEIA-ME-GOOGLE-DRIVE.txt: integração de backup.
